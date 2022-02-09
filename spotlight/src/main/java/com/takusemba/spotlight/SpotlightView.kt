@@ -193,37 +193,39 @@ internal class SpotlightView @JvmOverloads constructor(
         addView(target.overlay, MATCH_PARENT, MATCH_PARENT)
       }
       OverlayAlignment.TOP_LEFT -> {
-        overlayX = shapeXStart
-        overlayY = shapeYStart - overlayHeight - target.verticalMargin
+        overlayX = shapeXStart + target.offset.x
+        overlayY = shapeYStart - overlayHeight - target.verticalMargin + target.offset.y
       }
       OverlayAlignment.TOP_CENTER -> {
-        overlayX = target.anchor.x - (overlayWidth/2)
-        overlayY = shapeYStart - overlayHeight - target.verticalMargin
+        overlayX = target.anchor.x - (overlayWidth/2) + target.offset.x
+        overlayY = shapeYStart - overlayHeight - target.verticalMargin + target.offset.y
       }
       OverlayAlignment.TOP_RIGHT -> {
-        overlayX = shapeXEnd - overlayWidth
-        overlayY = shapeYStart - overlayHeight - target.verticalMargin
+        overlayX = shapeXEnd - overlayWidth + target.offset.x
+        overlayY = shapeYStart - overlayHeight - target.verticalMargin + target.offset.y
       }
       OverlayAlignment.BOTTOM_LEFT -> {
-        overlayX = shapeXStart
-        overlayY = shapeYEnd + target.verticalMargin
+        overlayX = shapeXStart + target.offset.x
+        overlayY = shapeYEnd + target.verticalMargin + target.offset.y
       }
       OverlayAlignment.BOTTOM_CENTER -> {
-        overlayX = target.anchor.x - overlayWidth/2
-        overlayY = shapeYEnd + target.verticalMargin
+        overlayX = target.anchor.x - overlayWidth/2 + target.offset.x
+        overlayY = shapeYEnd + target.verticalMargin + target.offset.y
       }
       OverlayAlignment.BOTTOM_RIGHT -> {
-        overlayX = shapeXEnd - overlayWidth
-        overlayY = shapeYEnd + target.verticalMargin
+        overlayX = shapeXEnd - overlayWidth + target.offset.x
+        overlayY = shapeYEnd + target.verticalMargin + target.offset.y
       }
       OverlayAlignment.DEFAULT_BOTTOM_CENTER -> {
-        overlayView.y = shapeYEnd + target.verticalMargin
+        overlayView.y = shapeYEnd + target.verticalMargin+target.offset.y
+        overlayView.x = target.offset.x
         val layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         layoutParams.setMargins(space16Dp,0,space16Dp,0)
         addView(overlayView, layoutParams)
       }
       OverlayAlignment.DEFAULT_TOP_CENTER -> {
-        overlayView.y = shapeYStart - overlayHeight - target.verticalMargin
+        overlayView.y = shapeYStart - overlayHeight - target.verticalMargin+target.offset.y
+        overlayView.x = target.offset.x
         val layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         layoutParams.setMargins(space16Dp,0,space16Dp,0)
         addView(overlayView, layoutParams)

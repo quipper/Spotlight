@@ -17,7 +17,8 @@ class Target(
     val overlay: View?,
     val listener: OnTargetListener?,
     val overlayAlignment: OverlayAlignment,
-    val verticalMargin: Float
+    val verticalMargin: Float,
+    val offset:PointF,
 ) {
 
     /**
@@ -33,6 +34,7 @@ class Target(
         private var listener: OnTargetListener? = null
         private var overlayAlignment: OverlayAlignment = OverlayAlignment.DEFAULT
         private var verticalMargin: Float = 0f
+        private var offset:PointF = PointF(0f,0f)
 
         /**
          * Sets a pointer to start a [Target].
@@ -43,6 +45,10 @@ class Target(
             val x = location[0] + view.width / 2f
             val y = location[1] + view.height / 2f
             setAnchor(x, y)
+        }
+
+        fun setAnchorOffset(xOffset: Float,yOffset: Float) = apply {
+            this.offset = PointF(xOffset,yOffset)
         }
 
         fun setAnchors(view1: View, view2: View,xOffset:Float,yOffset:Float): Builder = apply  {
@@ -125,7 +131,8 @@ class Target(
             overlay = overlay,
             listener = listener,
             overlayAlignment = overlayAlignment,
-            verticalMargin = verticalMargin
+            verticalMargin = verticalMargin,
+            offset = offset,
         )
 
         companion object {
