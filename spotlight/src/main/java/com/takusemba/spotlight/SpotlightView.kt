@@ -222,9 +222,17 @@ internal class SpotlightView @JvmOverloads constructor(
         layoutParams.setMargins(space16Dp,0,space16Dp,0)
         addView(overlayView, layoutParams)
       }
+      OverlayAlignment.DEFAULT_TOP_CENTER -> {
+        overlayView.y = shapeYStart - overlayHeight - target.verticalMargin
+        val layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        layoutParams.setMargins(space16Dp,0,space16Dp,0)
+        addView(overlayView, layoutParams)
+      }
     }
 
-    if (target.overlayAlignment != OverlayAlignment.DEFAULT && target.overlayAlignment!= OverlayAlignment.DEFAULT_BOTTOM_CENTER) {
+    if (target.overlayAlignment != OverlayAlignment.DEFAULT &&
+        target.overlayAlignment != OverlayAlignment.DEFAULT_BOTTOM_CENTER &&
+        target.overlayAlignment != OverlayAlignment.DEFAULT_TOP_CENTER) {
       overlayView.x = overlayX
       overlayView.y = overlayY
       addView(overlayView)
