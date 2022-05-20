@@ -17,7 +17,8 @@ class RoundedRectangle @JvmOverloads constructor(
     private val radius: Float,
     override val type :Shape.ShapeType = Shape.ShapeType.ROUNDED_RECTANGLE,
     override val duration: Long = DEFAULT_DURATION,
-    override val interpolator: TimeInterpolator = DEFAULT_INTERPOLATOR
+    override val interpolator: TimeInterpolator = DEFAULT_INTERPOLATOR,
+    override var clickable: Boolean = true
 ) : Shape {
 
   override fun draw(canvas: Canvas, point: PointF, value: Float, paint: Paint) {

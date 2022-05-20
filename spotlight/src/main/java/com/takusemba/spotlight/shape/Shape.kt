@@ -33,6 +33,7 @@ interface Shape {
 
   val height: Float
 
+  var clickable:Boolean
   /**
    * Draws the Shape.
    *

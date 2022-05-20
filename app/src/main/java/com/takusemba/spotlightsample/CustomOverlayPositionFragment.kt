@@ -23,6 +23,9 @@ class CustomOverlayPositionFragment : Fragment(R.layout.fragment_fragment_sample
     view.findViewById<View>(R.id.start).setOnClickListener { startButton ->
       val targets = ArrayList<Target>()
 
+      view.findViewById<TextView>(R.id.one).setOnClickListener {
+        Toast.makeText(requireContext(),"Target One Clicked",Toast.LENGTH_SHORT).show()
+      }
       // first target
       val firstRoot = FrameLayout(requireContext())
 
@@ -30,7 +33,7 @@ class CustomOverlayPositionFragment : Fragment(R.layout.fragment_fragment_sample
       val anchor1 = view.findViewById<View>(R.id.one)
       val firstTarget = Target.Builder()
           .setAnchor(anchor1)
-          .setShape(RoundedRectangle(1.5f*anchor1.height.toFloat(), 2*anchor1.width.toFloat(), 15f))
+          .setShape(RoundedRectangle(1.5f*anchor1.height.toFloat(), 2*anchor1.width.toFloat(), 15f,clickable = true))
           .setOverlay(first)
           .setOverlayAlignment(OverlayAlignment.TOP_LEFT)
           .setVerticalMargin(16f)
