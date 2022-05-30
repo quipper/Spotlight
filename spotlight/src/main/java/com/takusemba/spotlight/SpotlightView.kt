@@ -84,7 +84,7 @@ internal class SpotlightView @JvmOverloads constructor(
 
             if (x.toFloat() in leftX..rightX &&
                 y.toFloat() in topY..bottomY) {
-              return false
+              return target?.shape?.clickable != true
             }
           }
         }
@@ -101,7 +101,7 @@ internal class SpotlightView @JvmOverloads constructor(
             val bottom = it.y + halfHeight
 
             if (x.toFloat() in left..right && y.toFloat() in top..bottom) {
-              return false
+              return target?.shape?.clickable != true
             }
           }
         }
